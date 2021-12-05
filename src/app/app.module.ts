@@ -12,6 +12,8 @@ import { ProductosComponent } from './productos/productos.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { CarritosComponent } from './carritos/carritos.component';
 import {FormsModule} from "@angular/forms";
+import { FormComponent } from './categorias/form.component';
+
 
 
 const routes: Routes= [
@@ -21,6 +23,9 @@ const routes: Routes= [
   {path: 'usuarios', component: UsuariosComponent},
   {path: 'categorias', component: CategoriaComponent},
   {path: 'carritos', component: CarritosComponent},
+  /*para mandar al formulario- esto van en el categorias.component.html*/
+  {path: 'categorias/form', component: FormComponent}
+
 
 ];
 @NgModule({
@@ -32,10 +37,10 @@ const routes: Routes= [
     ProductosComponent,
     UsuariosComponent,
     CarritosComponent,
-    CategoriaComponent
-
-
+    CategoriaComponent,
+    FormComponent
   ],
+
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),

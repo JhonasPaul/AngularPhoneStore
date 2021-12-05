@@ -2,23 +2,25 @@
   <div class="card-header">Categorias</div>
   <div class="card-body text-primary">
     <h5 class="card-title">Listado de Categorias</h5>
-
+    <div class="my-2 text-left">
+      <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/categorias/form']">Crear Categorias</button>
+    </div>
     <div class="my-2 text-let">
     </div>
     <table class="table table-bordered table-striped">
       <thead>
       <tr>
         <th>Id</th>
-        <th>Estado</th>
         <th>Nombre</th>
+        <th>Estado</th>
 
       </tr>
       </thead>
       <tbody>
       <tr *ngFor="let c of categoria">
         <td>{{c.id_categoria}}</td>
-        <td>{{c.estado}}</td>
         <td>{{c.nombre}}</td>
+        <td>{{c.estado}}</td>
       </tr>
       </tbody>
     </table>
