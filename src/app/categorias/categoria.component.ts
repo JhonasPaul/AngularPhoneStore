@@ -17,5 +17,4 @@ export class CategoriaComponent implements OnInit {
       (categoria) =>this.categoria = categoria
     )
   }
-
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {Categoria} from "./categoria";
 import { CategoriaService } from './categoria.service';
+import swal from 'sweetalert2';
 
 
 @Component({
@@ -19,15 +20,14 @@ export class FormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
-  create(categoria:Categoria){
-    this.service.createCategoria(this.categoria).subscribe(
-      response =>this.router.navigate(['/categorias'])
-    )
-    // .subscribe(data => {
-    //   alert("se agrego con exito...!");
-    //   this.router.navigate(["lista"]);
-    // })
+  create():void{
+    this.service.createCategoria(this.categoria)
+    .subscribe(categoria => {
+        this.router.navigate(['/categorias'])
+        swal('Nueva Categoria', `Categoria ${categoria.nombre} creado con exito`, 'success')
+       
+    }
+    );
   }
 
 }

@@ -11,8 +11,12 @@ import {HttpClientModule} from "@angular/common/http";
 import { ProductosComponent } from './productos/productos.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { CarritosComponent } from './carritos/carritos.component';
+/*para usar formularios*/
 import {FormsModule} from "@angular/forms";
 import { FormComponent } from './categorias/form.component';
+import { FormProdComponent } from './productos/form-prod.component';
+
+
 
 
 
@@ -24,7 +28,8 @@ const routes: Routes= [
   {path: 'categorias', component: CategoriaComponent},
   {path: 'carritos', component: CarritosComponent},
   /*para mandar al formulario- esto van en el categorias.component.html*/
-  {path: 'categorias/form', component: FormComponent}
+  {path: 'categorias/form', component: FormComponent},
+  {path: 'productos/form', component: FormProdComponent}
 
 
 ];
@@ -38,13 +43,17 @@ const routes: Routes= [
     UsuariosComponent,
     CarritosComponent,
     CategoriaComponent,
-    FormComponent
+    /*formulario*/
+    FormComponent,
+    FormProdComponent
+
   ],
 
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
+    /*formulario*/
     FormsModule
   ],
   providers: [CategoriaService],

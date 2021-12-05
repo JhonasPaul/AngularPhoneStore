@@ -8,8 +8,8 @@ import {ProductoService} from "./producto.service";
   styleUrls: ['./productos.component.css']
 })
 export class ProductosComponent implements OnInit {
-  producto: Producto[] =[];
 
+  producto: Producto[] =[];
   constructor(private productoServicio: ProductoService ) {
 
 }
@@ -19,5 +19,4 @@ export class ProductosComponent implements OnInit {
       (producto) => this.producto = producto
     );
   }
-
 }
