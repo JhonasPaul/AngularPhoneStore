@@ -13,6 +13,12 @@
         <th>Id</th>
         <th>Nombre</th>
         <th>Estado</th>
+        <th>
+          Editar
+        </th>
+        <th>
+          Eliminar
+        </th>
 
       </tr>
       </thead>
@@ -21,6 +27,12 @@
         <td>{{c.id_categoria}}</td>
         <td>{{c.nombre}}</td>
         <td>{{c.estado}}</td>
+        <td>
+          <button type="button" name="editar" [routerLink]="['/categorias/form', c.id_categoria]" class="btn btn-primary">Editar</button>
+        </td>
+        <td>
+          <button type="button" name="eliminar" (click)="delete(c)" class="btn btn-danger">Eliminar</button>
+        </td>
       </tr>
       </tbody>
     </table>

@@ -14,13 +14,25 @@ export class CategoriaService {
   private httpHeader = new HttpHeaders({'Content-Type': 'application/json'})
   constructor(private http: HttpClient) { }
 
-  getCategoria(): Observable<Categoria[]>{
+  getCategorias(): Observable<Categoria[]>{
     return this.http.get<Categoria[]>(this.urlEndPoint).pipe(
       map((response) => response as Categoria[]));
   }
 
   createCategoria(categoria:Categoria): Observable<Categoria>{
     return this.http.post<Categoria>(this.urlEndPoint,categoria, {headers: this.httpHeader});
+  }
+/*obtener*/
+  getCategoria(id:number): Observable<Categoria>{
+    return this.http.get<Categoria>(`${this.urlEndPoint}/${id}`)
+  }
+/*actualizar*/
+  update(categoria:Categoria): Observable<Categoria>{
+    return this.http.put<Categoria>(`${this.urlEndPoint}/${categoria.id_categoria}`, categoria, {headers: this.httpHeader})
+  }
+
+  delete(id:number): Observable<Categoria>{
+    return this.http.delete<Categoria>(`${this.urlEndPoint}/${id}`, {headers: this.httpHeader})
   }
 }
 

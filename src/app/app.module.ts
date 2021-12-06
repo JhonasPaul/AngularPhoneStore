@@ -29,7 +29,9 @@ const routes: Routes= [
   {path: 'carritos', component: CarritosComponent},
   /*para mandar al formulario- esto van en el categorias.component.html*/
   {path: 'categorias/form', component: FormComponent},
-  {path: 'productos/form', component: FormProdComponent}
+  {path: 'productos/form', component: FormProdComponent},
+  /*para editar categoria*/
+  {path: 'categorias/form/:id', component: FormComponent}
 
 
 ];
