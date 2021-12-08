@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {Observable, map} from "rxjs";
+import {Observable, map, catchError, throwError} from "rxjs";
 import {Categoria} from "./categoria";
+import swal from "sweetalert2";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -12,27 +14,52 @@ export class CategoriaService {
 
   /*esto envia a la lista de categorias depues que si inserto una categoria*/
   private httpHeader = new HttpHeaders({'Content-Type': 'application/json'})
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router:Router) { }
 
   getCategorias(): Observable<Categoria[]>{
     return this.http.get<Categoria[]>(this.urlEndPoint).pipe(
       map((response) => response as Categoria[]));
   }
 
-  createCategoria(categoria:Categoria): Observable<Categoria>{
-    return this.http.post<Categoria>(this.urlEndPoint,categoria, {headers: this.httpHeader});
+  createCategoria(categoria:Categoria): Observable<any>{
+    return this.http.post<any>(this.urlEndPoint,categoria, {headers: this.httpHeader}).pipe(
+      catchError(e =>{
+        console.error(e.error.mensaje)
+        swal(e.error.mensaje, e.error.error, 'error');
+        return throwError(e);
+      })
+    );
   }
 /*obtener*/
   getCategoria(id:number): Observable<Categoria>{
-    return this.http.get<Categoria>(`${this.urlEndPoint}/${id}`)
+    return this.http.get<Categoria>(`${this.urlEndPoint}/${id}`).pipe(
+      catchError(e => {
+        this.router.navigate(['/categorias'])
+        console.error(e.error.mensaje);
+        swal('Error al editar la categoria', e.error.mensaje, 'error');
+        return throwError(e);
+      })
+    )
   }
 /*actualizar*/
-  update(categoria:Categoria): Observable<Categoria>{
-    return this.http.put<Categoria>(`${this.urlEndPoint}/${categoria.id_categoria}`, categoria, {headers: this.httpHeader})
+  update(categoria:Categoria): Observable<any>{
+    return this.http.put<any>(`${this.urlEndPoint}/${categoria.id_categoria}`, categoria, {headers: this.httpHeader}).pipe(
+      catchError(e =>{
+        console.error(e.error.mensaje)
+        swal(e.error.mensaje, e.error.error, 'error');
+        return throwError(e);
+      })
+    )
   }
 
   delete(id:number): Observable<Categoria>{
-    return this.http.delete<Categoria>(`${this.urlEndPoint}/${id}`, {headers: this.httpHeader})
+    return this.http.delete<Categoria>(`${this.urlEndPoint}/${id}`, {headers: this.httpHeader}).pipe(
+      catchError(e =>{
+        console.error(e.error.mensaje)
+        swal(e.error.mensaje, e.error.error, 'error');
+        return throwError(e);
+      })
+    )
   }
 }
 

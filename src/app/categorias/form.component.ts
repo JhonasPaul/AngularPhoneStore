@@ -31,22 +31,20 @@ export class FormComponent implements OnInit {
     })
   }
 
-
-
   create():void{
     this.service.createCategoria(this.categoria)
-    .subscribe(categoria => {
+    .subscribe(json => {
         this.router.navigate(['/categorias'])
-        swal('Nueva Categoria', `Categoria ${categoria.nombre} creado con exito`, 'success')
-
+        swal('Nueva Categoria', `${json.mensaje}, ${json.categoria.nombre}`, 'success')
     }
     );
   }
 
   update():void{
-    this.service.update(this.categoria).subscribe(categoria =>{
+    this.service.update(this.categoria)
+      .subscribe(json =>{
       this.router.navigate(['/categorias'])
-      swal('Categoria Actualizda', `Categoria${categoria.nombre} actualizado con éxito!`, 'success')
+      swal('Categoria Actualizada', `${json.mensaje}, ${json.categoria.nombre}`, 'success')
     })
   }
 }

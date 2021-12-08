@@ -16,10 +16,6 @@ import {FormsModule} from "@angular/forms";
 import { FormComponent } from './categorias/form.component';
 import { FormProdComponent } from './productos/form-prod.component';
 
-
-
-
-
 const routes: Routes= [
   {path: '', redirectTo: '/categorias', pathMatch: 'full'},
   {path: 'directivas', component: DirectivaComponent},
@@ -32,7 +28,6 @@ const routes: Routes= [
   {path: 'productos/form', component: FormProdComponent},
   /*para editar categoria*/
   {path: 'categorias/form/:id', component: FormComponent}
-
 
 ];
 @NgModule({
