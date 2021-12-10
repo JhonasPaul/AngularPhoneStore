@@ -41,7 +41,7 @@ export class CategoriaComponent implements OnInit {
             this.categoria = this.categoria.filter(cli => cli !== categoria)
             swal(
               'Categoria Eliminado!',
-              `Categoria ${categoria.nombre} eliminado con exito`,
+              `La Categoria ${categoria.nombre} eliminado con exito`,
               'success'
             )
           }

@@ -21,8 +21,9 @@ export class CategoriaService {
       map((response) => response as Categoria[]));
   }
 
-  createCategoria(categoria:Categoria): Observable<any>{
-    return this.http.post<any>(this.urlEndPoint,categoria, {headers: this.httpHeader}).pipe(
+  createCategoria(categoria:Categoria): Observable<Categoria>{
+    return this.http.post(this.urlEndPoint,categoria, {headers: this.httpHeader}).pipe(
+      map((response: any) => response.categoria as Categoria),
       catchError(e =>{
         console.error(e.error.mensaje)
         swal(e.error.mensaje, e.error.error, 'error');
@@ -30,20 +31,10 @@ export class CategoriaService {
       })
     );
   }
-/*obtener*/
-  getCategoria(id:number): Observable<Categoria>{
-    return this.http.get<Categoria>(`${this.urlEndPoint}/${id}`).pipe(
-      catchError(e => {
-        this.router.navigate(['/categorias'])
-        console.error(e.error.mensaje);
-        swal('Error al editar la categoria', e.error.mensaje, 'error');
-        return throwError(e);
-      })
-    )
-  }
 /*actualizar*/
-  update(categoria:Categoria): Observable<any>{
-    return this.http.put<any>(`${this.urlEndPoint}/${categoria.id_categoria}`, categoria, {headers: this.httpHeader}).pipe(
+  update(categoria:Categoria): Observable<Categoria>{
+    return this.http.put(`${this.urlEndPoint}/${categoria.id_categoria}`, categoria, {headers: this.httpHeader}).pipe(
+      map((response:any) => response.categoria as Categoria),
       catchError(e =>{
         console.error(e.error.mensaje)
         swal(e.error.mensaje, e.error.error, 'error');
@@ -53,10 +44,23 @@ export class CategoriaService {
   }
 
   delete(id:number): Observable<Categoria>{
-    return this.http.delete<Categoria>(`${this.urlEndPoint}/${id}`, {headers: this.httpHeader}).pipe(
+    return this.http.delete(`${this.urlEndPoint}/${id}`, {headers: this.httpHeader}).pipe(
+      map((response:any) => response.categoria as Categoria),
       catchError(e =>{
         console.error(e.error.mensaje)
         swal(e.error.mensaje, e.error.error, 'error');
+        return throwError(e);
+      })
+    )
+  }
+
+/*obtener*/
+  getCategoria(id:number): Observable<Categoria>{
+    return this.http.get<Categoria>(`${this.urlEndPoint}/${id}`).pipe(
+      catchError(e => {
+        this.router.navigate(['/categorias'])
+        console.error(e.error.mensaje);
+        swal('Error al editar la categoria', e.error.mensaje, 'error');
         return throwError(e);
       })
     )
