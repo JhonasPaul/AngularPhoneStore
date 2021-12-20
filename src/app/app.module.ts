@@ -15,9 +15,11 @@ import { CarritosComponent } from './carritos/carritos.component';
 import {FormsModule} from "@angular/forms";
 import { FormComponent } from './categorias/form.component';
 import { FormProdComponent } from './productos/form-prod.component';
+import { InicioComponent } from './inicio/inicio.component';
+
 
 const routes: Routes= [
-  {path: '', redirectTo: '/categorias', pathMatch: 'full'},
+  {path: '', redirectTo: '/inicio', pathMatch: 'full'},
   {path: 'directivas', component: DirectivaComponent},
   {path: 'productos', component: ProductosComponent},
   {path: 'usuarios', component: UsuariosComponent},
@@ -27,7 +29,8 @@ const routes: Routes= [
   {path: 'categorias/form', component: FormComponent},
   {path: 'productos/form', component: FormProdComponent},
   /*para editar categoria*/
-  {path: 'categorias/form/:id', component: FormComponent}
+  {path: 'categorias/form/:id', component: FormComponent},
+  {path: 'inicio', component: InicioComponent},
 
 ];
 @NgModule({
@@ -42,7 +45,8 @@ const routes: Routes= [
     CategoriaComponent,
     /*formulario*/
     FormComponent,
-    FormProdComponent
+    FormProdComponent,
+    InicioComponent
 
   ],
 
