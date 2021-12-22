@@ -27,4 +27,18 @@
   </div>
 
 
+  <div class="row" >
+
+    <div class="col-3" *ngFor="let p of producto">
+      <div class="card h-100">
+        <img src="/assets/img/{{p.url_imagen}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{p.nombre}}</h5>
+          <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum iste est sapiente inventore, nostrum enim. Quasi atque ut maxime unde, asperiores, nam sapiente, aliquid optio minus laboriosam eveniet eligendi voluptate!</p>
+          <button type="button" class="btn btn-info">Agregar al carrito</button>
+        </div>
+      </div>
+    </div><br>
+  </div>
+
 

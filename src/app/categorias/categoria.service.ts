@@ -25,6 +25,12 @@ export class CategoriaService {
     return this.http.post(this.urlEndPoint,categoria, {headers: this.httpHeader}).pipe(
       map((response: any) => response.categoria as Categoria),
       catchError(e =>{
+        /* error 400 viene de la validacion del backend */
+        /* el objeto e(error) tiene el atrubuto con la respuesta */
+        if(e.status == 400){
+          /* retorna al component para que controle el  error */
+          return throwError(e);
+        }
         console.error(e.error.mensaje)
         swal(e.error.mensaje, e.error.error, 'error');
         return throwError(e);
@@ -36,6 +42,11 @@ export class CategoriaService {
     return this.http.put(`${this.urlEndPoint}/${categoria.id_categoria}`, categoria, {headers: this.httpHeader}).pipe(
       map((response:any) => response.categoria as Categoria),
       catchError(e =>{
+          /* error 4oo viene de la validacion del backend */
+          if(e.status == 400){
+            /* retorna al component para que controle el  error */
+            return throwError(e);
+          }
         console.error(e.error.mensaje)
         swal(e.error.mensaje, e.error.error, 'error');
         return throwError(e);

@@ -16,7 +16,13 @@ import {FormsModule} from "@angular/forms";
 import { FormComponent } from './categorias/form.component';
 import { FormProdComponent } from './productos/form-prod.component';
 import { InicioComponent } from './inicio/inicio.component';
+/* fecha en español a toda la aplicacion*/
+import localeEs from '@angular/common/locales/es';
+import {registerLocaleData } from '@angular/common';
+import { DetalleComponent } from './productos/detalle/detalle.component';
 
+
+registerLocaleData(localeEs, 'es');
 
 const routes: Routes= [
   {path: '', redirectTo: '/inicio', pathMatch: 'full'},
@@ -30,7 +36,8 @@ const routes: Routes= [
   {path: 'productos/form', component: FormProdComponent},
   /*para editar categoria*/
   {path: 'categorias/form/:id', component: FormComponent},
-  {path: 'inicio', component: InicioComponent},
+  {path: 'productos/ver/:id', component: DetalleComponent},
+  {path: 'inicio', component: InicioComponent}
 
 ];
 @NgModule({
@@ -46,7 +53,8 @@ const routes: Routes= [
     /*formulario*/
     FormComponent,
     FormProdComponent,
-    InicioComponent
+    InicioComponent,
+    DetalleComponent
 
   ],
 

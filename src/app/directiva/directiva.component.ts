@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DirectivaComponent implements OnInit {
 
-  listaCurso: string[] = ['TypeScripty', 'JavaScript', 'Java SE', 'C#', 'PHP'];
+  listaCurso: string[] = ['Henry', 'Erick', 'Jaime', 'Ingrid', 'Jonathan', 'Genesis'];
   constructor() { }
 
 

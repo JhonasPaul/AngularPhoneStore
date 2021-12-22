@@ -1,7 +1,7 @@
 <div card="card bg-dark text-white">
   <div class="card-header">{{titulo}}</div>
   <div class="card-body">
-    <form (ngSubmit)="create(producto)">
+    <form #productoForm="ngForm">
       <div class="form-group row">
         <label for="estado" class="col-form-label col-sm-2">Estado</label>
         <div class="col-sm-6">
@@ -26,7 +26,7 @@
       <div class="form-group row">
         <label for="fecha_Ingreso" class="col-form-label col-sm-2">Fecha de Ingreso</label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" [(ngModel)]="producto.fecha_Ingreso" name="fecha_Ingreso">
+          <input type="date" class="form-control" [(ngModel)]="producto.fecha_Ingreso" name="fecha_Ingreso">
         </div>
       </div>
 
@@ -37,12 +37,12 @@
         </div>
       </div>
 
-      <div class="form-group row">
+      <!-- <div class="form-group row">
         <label for="url_imagen" class="col-form-label col-sm-2">Url imagen</label>
         <div class="col-sm-6">
           <input type="text" class="form-control" [(ngModel)]="producto.url_imagen" name="url_imagen">
         </div>
-      </div>
+      </div> -->
 
       <div class="form-group row">
         <label for="categoria" class="col-form-label col-sm-2">Categoria</label>
@@ -52,7 +52,7 @@
       </div>
       <div class="form-group row">
         <div class="col-sm-6">
-          <button class="btn btn-primary" role="button">Crear Categoria</button>
+          <button class="btn btn-primary" role="button" (click)='create()'>Crear Producto</button>
         </div>
       </div>
 
